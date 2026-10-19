@@ -1,0 +1,7 @@
+{
+  "checks": [
+    {"id":"limitations","kind":"text_contains","path":"brief.md","value":"限制"},
+    {"id":"metadata","kind":"json_fields","path":"metadata.json","fields":{"title":"string","assumptions":"array","synthetic":"boolean"}}
+  ],
+  "reviewCriteria": [{"id":"fit","text":"这份说明是否明确回答目标读者的问题，并区分事实与假设"}]
+}

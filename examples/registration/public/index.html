@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="社区木作入门工作坊模拟报名台">
+    <title>社区木作入门｜报名台</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23b33a28'/%3E%3Cpath d='M18 18h28v8H18zm0 14h20v8H18zm0 14h28v4H18z' fill='%23faf6ec'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="desk">
+      <header class="masthead entrance">
+        <div>
+          <p class="eyebrow">南岸社区 · 公共工作坊 01</p>
+          <h1>社区木作入门</h1>
+          <p class="event-meta">
+            <time datetime="2026-10-18T14:00:00+08:00">10 月 18 日，周日 14:00</time>
+            <span aria-hidden="true">／</span> 社区工坊一层
+          </p>
+        </div>
+        <div class="seat-stamp" aria-label="活动席位状态">
+          <span class="seat-number" id="remaining-seats">—</span>
+          <span>席可确认</span>
+          <small>共 <span id="capacity">2</span> 席</small>
+        </div>
+      </header>
+
+      <section class="registration entrance" aria-labelledby="form-title">
+        <div class="section-heading">
+          <p class="section-number">01</p>
+          <div>
+            <h2 id="form-title">登记参加</h2>
+            <p id="form-guidance">提交后即为确认席位。</p>
+          </div>
+        </div>
+
+        <form id="registration-form">
+          <div class="field">
+            <label for="name">姓名</label>
+            <input id="name" name="name" type="text" autocomplete="name" required maxlength="80">
+          </div>
+          <div class="field">
+            <label for="email">邮箱</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" inputmode="email">
+          </div>
+          <button class="primary-action" id="submit-button" type="submit">确认报名</button>
+        </form>
+        <p class="status" id="form-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="ledger entrance" aria-labelledby="ledger-title">
+        <div class="section-heading">
+          <p class="section-number">02</p>
+          <div>
+            <h2 id="ledger-title">报名名册</h2>
+            <p>确认席位与候补顺序实时更新</p>
+          </div>
+        </div>
+
+        <section class="ledger-group" aria-labelledby="confirmed-title">
+          <div class="ledger-subheading">
+            <h3 id="confirmed-title">已确认</h3>
+            <p><span id="confirmed-count">0</span> 人</p>
+          </div>
+          <div id="confirmed-list" class="ledger-list" role="list" aria-live="polite" aria-busy="true"></div>
+        </section>
+
+        <section class="ledger-group" aria-labelledby="waitlist-title">
+          <div class="ledger-subheading">
+            <h3 id="waitlist-title">候补名单</h3>
+            <p><span id="waitlist-count">0</span> 人 · 按登记顺序</p>
+          </div>
+          <div id="waitlist-list" class="ledger-list" role="list" aria-live="polite" aria-busy="true"></div>
+        </section>
+      </section>
+
+      <aside class="simulation-note entrance" aria-label="演示说明">
+        <span>模拟说明</span>
+        <p>这是本地演示应用。报名数据只保存在本次服务运行的内存中；不会发送真实邮件或通知。</p>
+      </aside>
+    </main>
+  </body>
+</html>

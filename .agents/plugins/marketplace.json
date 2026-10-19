@@ -1,0 +1,20 @@
+{
+  "name": "builder-mode-local",
+  "interface": {
+    "displayName": "Builder Mode Local"
+  },
+  "plugins": [
+    {
+      "name": "builder-mode",
+      "source": {
+        "source": "local",
+        "path": "./plugins/builder-mode"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

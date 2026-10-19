@@ -1,0 +1,25 @@
+{
+  "name": "builder-mode",
+  "version": "0.2.0-preview.1",
+  "description": "Turn natural-language product goals into persistent, verified iterations in Codex.",
+  "author": {
+    "name": "Builder Mode"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Builder Mode",
+    "shortDescription": "Build and improve products through one accountable AI partner.",
+    "longDescription": "One accountable product partner explains progress, outcomes and business decisions while handling implementation, preserving context and recording verification and delivery limits.",
+    "developerName": "Builder Mode",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Help me turn an incomplete idea into a usable, verified product.",
+      "Continue my Builder project from its saved product context."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

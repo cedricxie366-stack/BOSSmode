@@ -1,0 +1,14 @@
+{
+  "name": "civic-workshop-registration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "仅使用 Node.js 内置模块的小型活动报名应用",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

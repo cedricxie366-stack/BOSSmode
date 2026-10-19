@@ -1,0 +1,14 @@
+{
+  "name": "builder-mode-codex-plugin",
+  "version": "0.2.0-preview.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node scripts/sync-core.mjs",
+    "test": "node scripts/sync-core.mjs && node --test"
+  }
+}

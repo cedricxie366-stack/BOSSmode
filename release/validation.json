@@ -1,0 +1,51 @@
+{
+  "version": "0.2.0-preview.1",
+  "date": "2026-10-20",
+  "scope": "macOS native DSH integration preview; not universal professional quality or every-client certification",
+  "environment": {
+    "os": "macOS 15.5",
+    "architecture": "arm64",
+    "node": "24.12.0",
+    "dsh": "0.2.1-rc.2",
+    "codexCLI": "0.154.0",
+    "liveModel": "deepseek-official/deepseek-flash"
+  },
+  "passed": [
+    "DSH official plugin install from a standalone tarball into a clean profile",
+    "Web plugin enabled, all three components running; disable and re-enable",
+    "Native DSH skill discovery and real DeepSeek tool calls",
+    "First-version proposal before implementation and explicit response recording",
+    "Actual offline reading-list HTML creation, structural checks and version-bound reviews",
+    "Output-limit interruption retained as incomplete; original task resumed after confirmed runtime exit",
+    "Fresh sessions recovered product context and applied a changed requirement without redoing kickoff",
+    "Native subagent read-only review returned to the accountable parent",
+    "Coordinated backup restored into a separate copy; original artifact preserved",
+    "Markdown local file link clicked in official DSH Web and rendered in the sidebar",
+    "Codex installed-version artifact delivery, backup and restore regression",
+    "138 local Node regression tests and 6 control tests; clean distributed package 51 Node tests plus DSH dedicated-entry check",
+    "Explicit release file allowlist and secret/path checks"
+  ],
+  "retainedFailures": [
+    "Initial bundle YAML array expression rejected by DSH; corrected to a scalar expression before installation",
+    "Native DSH MCP initially projected text without structured state; host-specific text projection added",
+    "An 8192-token model output cap interrupted first build; no output counted as delivery",
+    "Concurrent Web and SDK ownership blocked resumption; separate lifecycle ownership used, no lock reset",
+    "An initial file:// result link was unsuitable for DSH; native Markdown file link behavior fixed and clicked",
+    "SDK could not authorize export outside its workspace; denial retained, no permissions disabled"
+  ],
+  "limits": [
+    "Only listed macOS ARM64 environment and DSH release tested; Intel, Windows, Linux and standalone desktop builds unverified",
+    "Web preview can restrict HTML scripts; previewing a file is not a guarantee of arbitrary application behavior",
+    "SDK has no interactive approval channel; use Web for actual permission decisions and never disable safeguards to make a test pass",
+    "Unknown executor state still blocks conflicting new work; model claims are not native stop attestation",
+    "Some model replies remain more detailed than ideal; real user comprehension and satisfaction require ongoing trials",
+    "Backup covers Builder state/journals/frozen assets, not every live business database or external service",
+    "Recorded plan/user responses are assistant-attributed, not cryptographic user authorization",
+    "API calls consume the user's model quota; monetary cost was not reliably available and remains unknown"
+  ],
+  "privacy": {
+    "userProjectDataPublished": false,
+    "credentialsPublished": false,
+    "rawModelOrSessionLogsPublished": false
+  }
+}

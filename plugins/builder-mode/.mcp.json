@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "builder-mode": {
+      "cwd": ".",
+      "command": "node",
+      "args": [
+        "./mcp/server.mjs"
+      ],
+      "default_tools_approval_mode": "prompt",
+      "tools": {
+        "builder_get_project": {
+          "approval_mode": "approve"
+        },
+        "builder_get_brief": {
+          "approval_mode": "approve"
+        }
+      },
+      "startup_timeout_sec": 10,
+      "tool_timeout_sec": 120
+    }
+  }
+}

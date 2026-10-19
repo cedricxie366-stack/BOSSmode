@@ -1,0 +1,21 @@
+- insert:
+    - id: builder-mode-paths
+      name: './bridge.mjs'
+    - id: builder-mode-tools
+      name: '@deepseek-ai/dsh-mcp-client'
+      inject: [builderModePaths]
+      config:
+        serverName: builder
+        transport: stdio
+        command: !!js ctx.builderModePaths.node
+        args: !!js "[ctx.builderModePaths.server]"
+        cwd: !!js ctx.builderModePaths.root
+        toolCallTimeoutMs: 120000
+        failOnStartupError: true
+    - id: builder-mode-skills
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      inject: [builderModePaths]
+      config:
+        providerName: builder-mode
+        includeDefaultRoots: false
+        customSkillDirs: !!js "[ctx.builderModePaths.skills]"

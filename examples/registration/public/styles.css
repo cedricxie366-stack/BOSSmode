@@ -1,0 +1,257 @@
+:root {
+  color-scheme: light;
+  --paper: #f3eddf;
+  --paper-light: #faf6ec;
+  --ink: #20221f;
+  --muted: #666258;
+  --rule: #b9ae99;
+  --accent: #b33a28;
+  --accent-dark: #852719;
+  --focus: #175b67;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(52, 45, 33, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 100% 28px;
+  font-family: "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+button, input { font: inherit; }
+
+.desk {
+  width: min(100% - 40px, 920px);
+  margin: 0 auto;
+  padding: 64px 0 48px;
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: end;
+  padding-bottom: 34px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.eyebrow,
+.section-number {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1, h2, p { margin-top: 0; }
+
+h1 {
+  margin-bottom: 12px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.event-meta {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.seat-stamp {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  min-width: 150px;
+  padding: 14px 16px 12px;
+  border: 1px solid var(--accent);
+  color: var(--accent-dark);
+}
+
+.seat-number {
+  display: inline-block;
+  margin-right: 8px;
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  transform-origin: center;
+}
+
+.seat-number.pulse { animation: number-pulse 360ms ease-out; }
+
+.seat-stamp small {
+  grid-column: 1 / -1;
+  padding-top: 5px;
+  border-top: 1px solid rgba(179, 58, 40, 0.3);
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.registration, .ledger { padding: 42px 0; border-bottom: 1px solid var(--rule); }
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin-bottom: 3px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.55rem;
+}
+
+.section-heading p { margin-bottom: 0; color: var(--muted); font-size: 0.85rem; }
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr auto;
+  gap: 18px;
+  align-items: end;
+  padding-left: 48px;
+}
+
+.field { display: grid; gap: 7px; }
+
+label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; }
+
+input {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.26);
+}
+
+input:focus-visible, button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.primary-action {
+  min-height: 44px;
+  padding: 10px 22px;
+  border: 1px solid var(--accent);
+  color: #fffaf0;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.primary-action:hover { background: var(--accent-dark); }
+.primary-action:disabled { cursor: not-allowed; opacity: 0.55; }
+
+.status {
+  min-height: 1.4em;
+  margin: 14px 0 0 48px;
+  color: var(--accent-dark);
+  font-size: 0.86rem;
+}
+
+.ledger-group { margin-left: 48px; }
+.ledger-group + .ledger-group { margin-top: 34px; }
+
+.ledger-subheading {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.ledger-subheading h3 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.08rem;
+}
+
+.ledger-subheading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ledger-list { border-top: 1px solid var(--ink); }
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: 38px 1fr 1.5fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 62px;
+  border-bottom: 1px solid var(--rule);
+  animation: row-enter 320ms ease-out both;
+}
+
+.ledger-index { color: var(--accent); font-family: Georgia, serif; }
+.ledger-name { font-weight: 700; }
+.ledger-email { overflow-wrap: anywhere; color: var(--muted); font-size: 0.88rem; }
+
+.cancel-action {
+  padding: 7px 2px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.cancel-action:hover { color: var(--accent-dark); }
+.ledger-empty { padding: 28px 0; color: var(--muted); }
+.ledger-row.leaving { animation: row-leave 190ms ease-in both; }
+
+.simulation-note {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 22px;
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.simulation-note span { color: var(--ink); font-weight: 700; letter-spacing: 0.1em; }
+.simulation-note p { max-width: 620px; margin-bottom: 0; }
+
+.entrance { animation: page-enter 520ms ease-out both; }
+.registration { animation-delay: 70ms; }
+.ledger { animation-delay: 120ms; }
+.simulation-note { animation-delay: 170ms; }
+
+@keyframes page-enter { from { opacity: 0; transform: translateY(10px); } }
+@keyframes number-pulse { 50% { color: var(--accent); transform: scale(1.14); } }
+@keyframes row-enter { from { opacity: 0; transform: translateY(6px); } }
+@keyframes row-leave { to { opacity: 0; transform: translateX(12px); } }
+
+@media (max-width: 700px) {
+  .desk { width: min(100% - 28px, 920px); padding-top: 30px; }
+  .masthead { grid-template-columns: 1fr; gap: 24px; }
+  .seat-stamp { justify-self: start; }
+  form { grid-template-columns: 1fr; padding-left: 0; }
+  .status, .ledger-group { margin-left: 0; }
+  .ledger-row { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 11px 0; }
+  .ledger-email { grid-column: 2 / -1; grid-row: 2; }
+  .cancel-action { grid-column: 3; grid-row: 1; }
+  .simulation-note { grid-template-columns: 1fr; gap: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
