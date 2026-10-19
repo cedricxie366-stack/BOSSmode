@@ -21,7 +21,7 @@ const {
   buildCandidateManifest,
 } = require(path.join(pluginRoot, 'runtime', 'verification.cjs'));
 
-const SERVER_NAME = 'Builder Mode';
+const SERVER_NAME = 'BOSSmode';
 const SERVER_VERSION = pluginManifest.version;
 const RUNTIME_HOST = process.env.BUILDER_MODE_HOST ?? 'codex';
 if (!['codex', 'dsh'].includes(RUNTIME_HOST)) throw new Error('Unsupported Builder host');

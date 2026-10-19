@@ -16,7 +16,7 @@ for(const host of ['codex','dsh'])test(`${host} transport preserves real host id
   const request=(method,params)=>new Promise(resolve=>{const id=++counter;pending.set(id,resolve);child.stdin.write(JSON.stringify({jsonrpc:'2.0',id,method,params})+'\n');});
   try{
     const initialized=await request('initialize',{protocolVersion:'2025-11-25'});
-    assert.equal(initialized.result.serverInfo.name,'Builder Mode');
+    assert.equal(initialized.result.serverInfo.name,'BOSSmode');
     const opened=await request('tools/call',{name:'builder_open_project',arguments:{workspacePath,goal:'合成跨宿主检查'}});
     const data=opened.result.structuredContent;
     assert.equal(data.project.minimalExperiment.host,host);

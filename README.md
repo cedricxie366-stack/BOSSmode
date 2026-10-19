@@ -1,6 +1,12 @@
-# Builder Mode — 让你负责判断，让团队负责实现
+# BOSSmode — 这次，轮到你当老板
 
-Builder Mode 是用于 Codex 和 DeepSeek Harness（DSH）的本地产品协作插件。你用自然语言表达目标、体验成果、提出判断；负责人承担研究、实施、协调、检查和解释，不要求你选择技术框架或搬运子任务结果。
+[中文](README.md) | [English](README.en.md)
+
+BOSSmode（原名 Builder Mode）是用于 Codex 和 DeepSeek Harness（DSH）的本地产品协作插件。你用自然语言表达目标、体验成果、提出判断；一个持续负责的 AI 伙伴承担研究、实施、协调、检查和解释，不要求你选择技术框架或搬运子任务结果。
+
+你负责说“我有个想法”、看进度、试成果、提意见；AI 负责把方案讲清楚，并推进日常工作。“老板许愿”是个玩笑，能被检查、能继续改进的交付才是正事。
+
+“老板体验”不是躺着等奇迹：你仍决定方向、范围、预算和重要取舍；系统应让你看懂进度、结果和影响，不把工程管理交回给你。长期愿景是让普通人也能围绕自己的目标组织专业 AI 协作，不预设行业或固定角色；当前能力以实际验证范围为准。本项目为社区插件，不是 OpenAI 或 DeepSeek 官方产品。
 
 采用 Apache License 2.0，见 LICENSE。当前为预览版；内部技术验收不等于所有用户都能顺利完成任意项目，也不是成熟通用专业团队的保证。
 
@@ -16,7 +22,7 @@ Builder Mode 是用于 Codex 和 DeepSeek Harness（DSH）的本地产品协作�
 
 ## 安装者和维护者说明
 
-本版实际验证范围：macOS 15.5 / Apple Silicon、Node.js 24、Codex CLI 0.154.0、DSH 0.2.1-rc.2。DSH 使用官方 Web 界面和原生 Session；不声称已测试独立桌面打包应用、Intel Mac、Windows、Linux或所有未来版本。需使用者自己的宿主和模型访问权限；不承诺调用免费或无限。Builder 本身不打包第三方运行依赖。实际流程与保留的失败见 [验证范围](release/validation.json)。
+本版实际验证范围：macOS 15.5 / Apple Silicon、Node.js 24、Codex CLI 0.154.0、DSH 0.2.1-rc.2。DSH 使用官方 Web 界面和原生 Session；不声称已测试独立桌面打包应用、Intel Mac、Windows、Linux或所有未来版本。需使用者自己的宿主和模型访问权限；不承诺调用免费或无限。BOSSmode 本身不打包第三方运行依赖。实际流程与保留的失败见 [验证范围](release/validation.json)。
 
 ### DSH 用户
 
@@ -30,10 +36,10 @@ dsh web
 从本仓库固定版本直接安装（需要 Git 与 pnpm）：
 
 ```sh
-dsh plugin --profile web add github:cedricxie366-stack/builder-mode#v0.2.0-preview.1
+dsh plugin --profile web add github:cedricxie366-stack/BOSSmode#v0.2.0-preview.2
 ```
 
-也可在 DSH 官方界面的“插件 → 添加插件”中选择这个源码目录。安装后应看到 `builder-mode`，且它的 3 个组件均在运行。插件不选择或更换你的模型、不收集密钥、不放宽权限；先在 DSH 中完成自己的模型配置。项目工作文件夹另选，不要使用源码目录。
+也可在 DSH 官方界面的“插件 → 添加插件”中选择这个源码目录。为兼容已有安装，DSH 管理页的包标识仍是 `builder-mode`，说明为 BOSSmode，且它的 3 个组件应均在运行。插件不选择或更换你的模型、不收集密钥、不放宽权限；先在 DSH 中完成自己的模型配置。项目工作文件夹另选，不要使用源码目录。
 
 SDK 自动化用户可安装到 `sdk` profile；`headless` 用户安装到 `headless` profile。各 profile 分开安装。SDK 的权限问答能力不等同于 Web 界面；不要为了通过测试关闭权限保护，也不要同时从两个 DSH 进程控制同一个 Session。
 
@@ -55,9 +61,17 @@ codex plugin add builder-mode@builder-mode-local
 
 ## 当前限制
 
+本次 `0.2.0-preview.2` 是品牌与双语文档更新，不新增产品能力。完整真实模型流程的证据基线为 `0.2.0-preview.1`；本次对更名、安装兼容及共享核心另做回归，不把历史证据冒充新一轮完整用户试用。
+
 小型报名样例有行为检查，其他文件成果有数据检查和版本绑定评审；结构通过不等于事实/创作品质认证。备份主状态、日志、冻结成果，不自动备份实时业务数据。旧执行者状态不明时阻断重派。暂不支持无人值守生产发布、支付或真实客户资料流程。Codex 与 DSH 二选一即可，不需要自建 Builder Web。
 
 你可停用插件而保留产品目录及 .builder-mode；不要为排错删除状态。更多使用与恢复边界见插件 README。
+
+## 更名与旧项目
+
+品牌与 GitHub 仓库名称已改为 BOSSmode；`builder-mode` 安装包/技能标识、`builder_*` 工具、`.builder-mode` 数据目录和旧版本标签保留。不要手工改这些名字，不需要迁移或重做产品。旧 GitHub 地址会重定向至新地址。该更名不表示完成商标或同名权利检索。
+
+BOSSmode 是本仓库独立维护的社区项目，与其他同名 AI 产品无关联；请以本仓库地址和安装说明识别。名称存在其他使用者，不宣称独占或已获得商标保护。
 
 ## 反馈
 

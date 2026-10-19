@@ -1,12 +1,12 @@
 {
   "name": "builder-mode",
-  "version": "0.2.0-preview.1",
-  "description": "让你负责判断，让 AI 负责实现：Codex 与 DeepSeek Harness 的产品伙伴。",
+  "version": "0.2.0-preview.2",
+  "description": "BOSSmode — 你定方向，AI 负责推进。Codex 与 DeepSeek Harness 的产品伙伴。",
   "type": "module",
   "license": "Apache-2.0",
   "engines": { "node": ">=24" },
-  "repository": { "type": "git", "url": "https://github.com/cedricxie366-stack/builder-mode.git" },
+  "repository": { "type": "git", "url": "https://github.com/cedricxie366-stack/BOSSmode.git" },
   "dsh": { "bundle": { "patch": "./plugins/builder-mode-dsh/cordis.patch.yml" } },
   "scripts": { "test": "npm --prefix plugins/builder-mode test && node tools/test_dsh_entry.mjs", "test:release": "node tools/test_source_preview.mjs" },
-  "files": [".agents/plugins/marketplace.json", "plugins/", "packages/", "control/policy.defaults.json", "examples/", "tools/", "release/", "evals/", "LICENSE", "README.md", "CONTRIBUTING.md", "SECURITY.md", "DEPENDENCIES.md"]
+  "files": [".agents/plugins/marketplace.json", "plugins/", "packages/", "control/policy.defaults.json", "examples/", "tools/", "release/", "evals/", "LICENSE", "README.md", "README.en.md", "CONTRIBUTING.md", "SECURITY.md", "DEPENDENCIES.md"]
 }

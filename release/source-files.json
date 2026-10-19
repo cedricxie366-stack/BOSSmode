@@ -75,6 +75,7 @@
     "tools/test_dsh_entry.mjs",
     "release/source-files.json",
     "release/README.md",
+    "release/README.en.md",
     "release/CONTRIBUTING.md",
     "release/SECURITY.md",
     "release/DEPENDENCIES.md"
@@ -83,6 +84,7 @@
   "rootDocuments": {
     "release/package.json": "package.json",
     "release/README.md": "README.md",
+    "release/README.en.md": "README.en.md",
     "release/CONTRIBUTING.md": "CONTRIBUTING.md",
     "release/SECURITY.md": "SECURITY.md",
     "release/DEPENDENCIES.md": "DEPENDENCIES.md"

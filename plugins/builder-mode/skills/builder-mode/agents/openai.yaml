@@ -1,5 +1,5 @@
 interface:
-  display_name: "Builder Mode"
+  display_name: "BOSSmode"
   short_description: "用自然沟通持续构建、验证并恢复真实产品成果"
   default_prompt: "Use $builder-mode to turn my incomplete idea into a usable, verified product."
 policy:

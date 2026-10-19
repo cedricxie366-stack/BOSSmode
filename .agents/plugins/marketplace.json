@@ -1,7 +1,7 @@
 {
   "name": "builder-mode-local",
   "interface": {
-    "displayName": "Builder Mode Local"
+    "displayName": "BOSSmode Local"
   },
   "plugins": [
     {
