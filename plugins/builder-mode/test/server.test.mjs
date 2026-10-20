@@ -92,6 +92,8 @@ test('a killed change process leaves an unresolved writer and blocks redispatch'
 
 test('advertises bounded Builder tools including backup and recovery inspection', () => {
   assert.deepEqual(toolDefinitions.map((tool) => tool.name), [
+    'builder_review_reply',
+    'builder_set_communication_preference',
     'builder_propose_plan',
     'builder_record_plan_response',
     'builder_reconcile_decision',

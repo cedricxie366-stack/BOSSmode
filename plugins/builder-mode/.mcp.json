@@ -13,6 +13,9 @@
         },
         "builder_get_brief": {
           "approval_mode": "approve"
+        },
+        "builder_review_reply": {
+          "approval_mode": "approve"
         }
       },
       "startup_timeout_sec": 10,

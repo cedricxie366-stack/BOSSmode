@@ -29,7 +29,11 @@ You can say: “I want to build … Help me understand the smallest useful versi
 
 Standalone packaged desktop applications, Intel Macs, Windows, Linux, and other host versions have **not** been verified. A package appearing in a plugin list does not prove full support. See [validation scope and retained failures](release/validation.json).
 
-Version `0.2.0-preview.2` updates the public name and bilingual documentation. The full real-model workflow baseline is `0.2.0-preview.1`; this rename receives separate compatibility and core regression checks, not a claim of a new complete human trial.
+Version `0.2.0-preview.3` adds pre-send wording review for progress updates, questions and final replies. The lead submits the actual draft, revises flagged jargon or excessive technical detail, and sends the passing text unchanged. Plain language is the default. Only an explicit user statement of relevant technical background permits limited detail in that area; the user can switch back to plain language at any time. Successfully saved preferences can be read in a new conversation.
+
+The local checker makes no additional model calls and does not persist full reply drafts. Known wording rules are combined with disclosed assistant semantic self-review; this is not independent factual verification or a host-wide output interceptor. Rules may miss problems. Technical background never grants permission for actions. Saving a preference still follows host approval policy: a denied save is disclosed, not bypassed or presented as persistent. See [this update's validation scope](release/reply-review-validation.json).
+
+Version `0.2.0-preview.2` was the branding/bilingual update. The historical full real-model build workflow baseline remains `0.2.0-preview.1`, described in `release/validation.json`. Current wording tests and synthetic scenarios do not certify real user comprehension or repeat every host UI workflow.
 
 ## Install in DSH
 
@@ -43,7 +47,7 @@ dsh web
 Or install the pinned GitHub version:
 
 ```sh
-dsh plugin --profile web add github:cedricxie366-stack/BOSSmode#v0.2.0-preview.2
+dsh plugin --profile web add github:cedricxie366-stack/BOSSmode#v0.2.0-preview.3
 ```
 
 The official DSH plugin manager can also install the local source directory. For compatibility, its package identifier remains `builder-mode`; the description identifies it as BOSSmode. All three components should be running. Configure your model access in DSH itself. BOSSmode does not choose a model, collect credentials, or relax permissions.

@@ -1,6 +1,6 @@
 {
   "name": "builder-mode-codex-plugin",
-  "version": "0.2.0-preview.2",
+  "version": "0.2.0-preview.3",
   "private": true,
   "license": "Apache-2.0",
   "type": "module",

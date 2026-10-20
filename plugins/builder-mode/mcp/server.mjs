@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { recordReview, prepareDelivery } from './artifacts.mjs';
 import { getOwnerBrief, recordOwnerUpdate, prepareDecision, recordDecisionResponse, reconcileDecision } from './owner-experience.mjs';
 import { proposePlan, recordPlanResponse, requireAlignedPlan, planStatus } from './product-plan.mjs';
+import { communicationPreference, setCommunicationPreference, reviewReply } from './reply-review.mjs';
 
 const require = createRequire(import.meta.url);
 const pluginRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -180,6 +181,7 @@ function summarizeSnapshot(store, projectId) {
     project: snapshot.project,
     brief: snapshot.brief,
     contextItems: snapshot.contextItems,
+    communicationPreference: communicationPreference(store, projectId),
     productPlan: planStatus(store,snapshot.project),
     rules: store.listRules({
       projectId,
@@ -807,6 +809,29 @@ function checkExternalAction(args) {
 
 export const toolDefinitions = Object.freeze([
   {
+    name: 'builder_review_reply', title: 'Check a reply before sending it',
+    description: 'Review the exact draft of every owner-facing progress message, question and final reply before sending. Locally checks jargon, technical density and saved user preference, with a disclosed assistant semantic self-review. Revise failed drafts; send passing sendText unchanged. Does not verify facts or intercept host output. Can run before project creation.',
+    inputSchema: { type: 'object', properties: {
+      workspacePath: { type: 'string' }, projectId: { type: 'string' },
+      draft: { type: 'string', maxLength: 24000 }, kind: { type: 'string', enum: ['progress','question','final'] },
+      selfReview: { type: 'object', properties: {
+        meaningFirst: { type: 'boolean' }, necessaryDetailOnly: { type: 'boolean' }, risksAndUnknownsPreserved: { type: 'boolean' },
+      }, required: ['meaningFirst','necessaryDetailOnly','risksAndUnknownsPreserved'], additionalProperties: false },
+    }, required: ['draft','kind','selfReview'], additionalProperties: false },
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+  },
+  {
+    name: 'builder_set_communication_preference', title: 'Remember how much technical detail the user wants',
+    description: 'Save an actual explicit user-background statement and its reference, limiting technical detail to familiar topics. Default is plain; do not infer expertise from terminology, credentials, examples, or a hypothetical request. Plain resets the preference. This is assistant attribution, not authenticated consent or action authorization.',
+    inputSchema: { type: 'object', properties: {
+      workspacePath: { type: 'string' }, projectId: { type: 'string' }, expectedStateRevision: { type: 'integer' },
+      level: { type: 'string', enum: ['plain','limited_technical'] },
+      topics: { type: 'array', maxItems: 4, items: { type: 'string', enum: ['frontend','data','operations','programming'] } },
+      userQuote: { type: 'string' }, sourceRef: { type: 'string' },
+    }, required: ['workspacePath','expectedStateRevision','level','topics','userQuote','sourceRef'], additionalProperties: false },
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+  },
+  {
     name:'builder_propose_plan',title:'Discuss the first usable version',
     description:'Save a short user-facing first-version proposal: outcome, where it will be used, included/excluded scope, order and next checkpoint. Does not start implementation.',
     inputSchema:{type:'object',properties:{workspacePath:{type:'string'},projectId:{type:'string'},expectedStateRevision:{type:'integer'},
@@ -1111,6 +1136,8 @@ export async function callBuilderTool(name, args = {}) {
 
 async function dispatchBuilderTool(name, args) {
   const handler = {
+    builder_review_reply: args => reviewReply(args, { withStore, canonicalWorkspace }),
+    builder_set_communication_preference: args => setCommunicationPreference(args, { withStore }),
     builder_propose_plan: args => proposePlan(args,{withStore}),
     builder_record_plan_response: args => recordPlanResponse(args,{withStore}),
     builder_reconcile_decision: args => reconcileDecision(args, { withStore }),
@@ -1189,7 +1216,7 @@ async function handleRequest(message) {
       protocolVersion: params?.protocolVersion ?? '2025-11-25',
       capabilities: { tools: {} },
       serverInfo: { name: SERVER_NAME, version: SERVER_VERSION },
-      instructions: 'Be the accountable product lead. For a new project, explain the first-version outcome, where it will be used, included/excluded scope, order and next checkpoint in everyday language, then get the actual user response before setup, credentials, connections or implementation. Choosing an AI provider is not accepting the product plan. Once aligned, own routine execution without repeated confirmations. Every user-facing reply starts with what it means for the user, not technical labels. Load project context/brief and distinguish checked results, expectations and permissions. Plan responses are assistant-attributed, not external authorization.',
+      instructions: 'Be the accountable product lead. Before EVERY owner-facing progress message, question and final reply, call builder_review_reply with the actual complete draft and honest semantic self-review; revise on needs_revision and send passing sendText unchanged. This read-only wording check works before project creation and is not factual certification or host-wide interception. Default to plain language; only an actual user statement of relevant background permits builder_set_communication_preference for limited technical topics; never infer expertise or authorization. For a new project, explain the first-version outcome, where it will be used, included/excluded scope, order and next checkpoint in everyday language, then get the actual user response before setup, credentials, connections or implementation. Choosing an AI provider is not accepting the product plan. Once aligned, own routine execution without repeated confirmations. Every user-facing reply starts with what it means for the user, not technical labels. Load project context/brief and distinguish checked results, expectations and permissions. Plan responses are assistant-attributed, not external authorization.',
     });
     return;
   }

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { currentReviewState } from './artifacts.mjs';
 import { planStatus, requireTaskPlan } from './product-plan.mjs';
+import { communicationPreference } from './reply-review.mjs';
 const require = createRequire(import.meta.url);
 const { buildCandidateManifest } = require('../runtime/verification.cjs');
 const digest = bytes => 'sha256:' + createHash('sha256').update(bytes).digest('hex');
@@ -145,6 +146,7 @@ export function getOwnerBrief(args, { withStore, inspectRecovery }) {
     return { message: userMessage, data: {
       stateRevision: project.stateRevision,
       ownerBrief: { goal: project.goal, state, phase, activityObserved: false, blockers,
+        communicationPreference: communicationPreference(store, project.id),
         meaningForYou, userMessage, productPlan,
         lastReportedAt: update?.createdAt ?? null,
         currentFocus: report?.currentFocus ?? productPlan.plan?.userOutcome ?? snapshot.brief?.summary ?? '当前尚未保存负责人进展说明',

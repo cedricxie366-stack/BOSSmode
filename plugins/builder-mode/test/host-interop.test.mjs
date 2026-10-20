@@ -24,5 +24,18 @@ for(const host of ['codex','dsh'])test(`${host} transport preserves real host id
     else assert.equal(opened.result.content.length,1);
     const state=await request('tools/call',{name:'builder_get_project',arguments:{workspacePath}});
     assert.equal(state.result.structuredContent.stateRevision,data.stateRevision);
+    const review = async draft => (await request('tools/call', {name:'builder_review_reply',arguments:{
+      workspacePath, draft, kind:'final', selfReview:{meaningFirst:true,necessaryDetailOnly:true,risksAndUnknownsPreserved:true},
+    }})).result.structuredContent;
+    assert.equal((await review('API schema 已打通链路。')).status,'needs_revision');
+    const passing = await review('你现在可以查看第一版，手机上的使用效果还没有验证。');
+    assert.equal(passing.status,'passed');
+    assert.equal(passing.sendText,'你现在可以查看第一版，手机上的使用效果还没有验证。');
+    const preference = await request('tools/call',{name:'builder_set_communication_preference',arguments:{
+      workspacePath,expectedStateRevision:data.stateRevision,level:'limited_technical',topics:['frontend'],
+      userQuote:'我懂一些前端，可以简短讲 CSS。',sourceRef:'synthetic-host-test',
+    }});
+    assert.equal(preference.result.structuredContent.preference.level,'limited_technical');
+    assert.equal((await review('按钮会更容易点到。只改 CSS 的间距。')).status,'passed');
   }finally{child.stdin.end();await closed;rmSync(workspacePath,{recursive:true,force:true});}
 });

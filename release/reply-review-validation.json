@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0-preview.3",
+  "date": "2026-10-20",
+  "scope": "Reply wording checks and communication preference, not universal comprehension or host-wide interception",
+  "baseline": "Full real-model build journey remains the historical preview.1 evidence in validation.json",
+  "environment": {
+    "os": "macOS 15.5",
+    "architecture": "arm64",
+    "node": "24.12.0",
+    "codexCLI": "0.154.0",
+    "dsh": "0.2.1-rc.2"
+  },
+  "checked": [
+    "Known jargon, unexplained technical terms, excessive technical density and internal bookkeeping rejected in actual drafts",
+    "Plain default; explicit user-background statement limited to the familiar topic, with a plain-language reset",
+    "Quoted, hypothetical, question and negated statements cannot establish the tested technical preferences",
+    "General programming background does not automatically permit database or operations terminology",
+    "Saved preferences survive project reads, separate service processes and product-direction changes",
+    "Review receipt bound to the exact draft and communication preference version",
+    "Actual native Codex synthetic progress/final replies had passing reviews before emission; rejected drafts were revised",
+    "Final code independently rechecked against reproduced defects, including visible formatting variants",
+    "153 local Node checks and 6 development-control checks passed",
+    "66 clean-distribution Node checks plus DSH dedicated-entry integration passed",
+    "DSH clean profile installation uses the shared wording-check implementation"
+  ],
+  "retainedLimitations": [
+    "The assistant must use the review workflow; not every host output channel is forcibly intercepted",
+    "Known wording heuristics plus assistant semantic self-review can miss issues; not independent factual certification",
+    "Native unattended Codex preference saves required approval and were denied; no approval settings were relaxed to make those calls succeed",
+    "Service-level preference persistence was tested, but the denied native saves are not claimed as successful",
+    "User-background records are assistant-attributed, not authenticated user consent or action permission",
+    "No fresh full native DSH model/UI journey in this iteration",
+    "Synthetic dialogue checks do not establish real user comprehension or satisfaction",
+    "Model test costs were not reliably available; unknown is not zero"
+  ],
+  "privacy": {
+    "userProjectsIncluded": false,
+    "credentialsIncluded": false,
+    "rawSessionLogsIncluded": false,
+    "checkerMakesAdditionalModelCalls": false
+  }
+}

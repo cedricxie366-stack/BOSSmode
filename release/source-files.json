@@ -16,6 +16,7 @@
     "plugins/builder-mode/mcp/artifacts.mjs",
     "plugins/builder-mode/mcp/owner-experience.mjs",
     "plugins/builder-mode/mcp/product-plan.mjs",
+    "plugins/builder-mode/mcp/reply-review.mjs",
     "plugins/builder-mode/skills/builder-mode/SKILL.md",
     "plugins/builder-mode/skills/builder-mode/agents/openai.yaml",
     "plugins/builder-mode/skills/builder-mode/references/artifact-review.md",
@@ -27,6 +28,7 @@
     "plugins/builder-mode/test/artifacts.test.mjs",
     "plugins/builder-mode/test/owner-experience.test.mjs",
     "plugins/builder-mode/test/product-plan.test.mjs",
+    "plugins/builder-mode/test/reply-review.test.mjs",
     "plugins/builder-mode/test/aligned-fixture.mjs",
     "plugins/builder-mode/runtime/state.cjs",
     "plugins/builder-mode/runtime/policy.cjs",
@@ -79,7 +81,9 @@
     "release/CONTRIBUTING.md",
     "release/SECURITY.md",
     "release/DEPENDENCIES.md"
-    ,"release/validation.json"
+    ,"release/validation.json",
+    "release/reply-review-validation.json",
+    "release/RELEASE_NOTES_0.2.0-preview.3.md"
   ],
   "rootDocuments": {
     "release/package.json": "package.json",

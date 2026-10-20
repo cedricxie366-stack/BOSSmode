@@ -1,6 +1,6 @@
 {
   "name": "builder-mode",
-  "version": "0.2.0-preview.2",
+  "version": "0.2.0-preview.3",
   "description": "BOSSmode — 你定方向，AI 负责推进。Codex 与 DeepSeek Harness 的产品伙伴。",
   "type": "module",
   "license": "Apache-2.0",
